@@ -1,7 +1,6 @@
 git clone https://github.gatech.edu/lrichert3/PGM-8003-project
 
-# Or, if you have already cloned it previously
-
+# Or, if you already have the repository stored locally, navigate to that folder and use
 git pull
 ##
 
