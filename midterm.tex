@@ -33,8 +33,23 @@ Ravikumar et. al ~\cite{ravikumar2010high} study the problem of signed edge reco
 
 Regularization as well as variable selection plays a major role in linear regression. A large number of proposals are made to overcome the limitation of least square regression. The early milestone in this area is ridge regression ~\cite{AEHoerl1970ridge}. Subjected to a L2 penalty, ridge regression aims to minimize the sum of squared error. Ridge regression achieves better performance through bias-variance trade-off. However, the main drawback is that ridge regression is not a parsimonious model; it simply keeps all predictors in the model. 
 \\ \\
-Another popular algorithm, lasso ~\cite{tibshirani1996regression}, was proposed in 1996. By incorporating the L1-norm for regularization, lasso performs optimally in high-dimensional, low-correlated settings, in terms of both prediction and parameter estimation. Unlike ridge regression, lasso does have sparse representation. People have figured out that, nevertheless, lasso performs poorly under three conditions: 1) Let p represent the number of features and n represent the number of observations. For p >n, lasso selects at most n variables before it saturates; besides, lasso is not well defined unless the bound on L1-norm of the coefficients is smaller than a certain value. 2) For a group of variables whose pairwise correlations are very high, lasso tends to select only one variable and does not care which one is selected. 3) For n>p case, when predictors have high correlations, the prediction performance of lasso is dominated by ridge regression.
-\\ \\
+Another popular algorithm, lasso ~\cite{tibshirani1996regression}, was proposed in 1996. By incorporating the L1-norm for regularization, lasso performs optimally in high-dimensional, low-correlated settings, in terms of both prediction and parameter estimation. Unlike ridge regression, lasso does have sparse representation. People have figured out that, nevertheless, lasso performs poorly under three conditions:
+
+\begin{enumerate} 
+
+\item
+
+Let $p$ represent the number of features and $n$ represent the number of observations. For $p>n$, lasso selects at most $n$ variables before it saturates; besides, lasso is not well defined unless the bound on L1-norm of the coefficients is smaller than a certain value.
+\item
+
+For a group of variables whose pairwise correlations are very high, lasso tends to select only one variable and does not care which one is selected.
+
+\item
+
+ For $n>p$ case, when predictors have high correlations, the prediction performance of lasso is dominated by ridge regression.\\ \\
+
+\end{enumerate}
+
 In order to address the third problem of lasso, elastic net ~\cite{Zou2005Reg} was proposed in 2005 by adding the squared L2 norm, a strongly convex penalty term to the L1 norm in lasso. Elastic net performs similarly to lasso in scenario 1) and 2), but by encouraging grouping effect, has higher accuracy than lasso in scenario 3). To be more specific, in scenario 3), some features are highly correlated with each other and are associated with response; thus elastic net aims to perform less shrinkage on those subsets of features. In addition, similar to lasso, elastic net does both continuous shrinkage and automatic variable selection. Note that ridge regression has only continuous shrinkage but no automatic variable selection.
 \\ \\
 Group lasso ~\cite{Francis2008Con} is another approach to implement the grouping effect to lasso. Group lasso divides predictors into group and penalizes the sum of L2-norm. The basic assumption of group lasso is known a priori that there are distinct groups or clusters among variables; it uses L2 penalty on coefficients within each of K known and non-overlapping groups. However, as many researchers pointed out, knowing the group in advance is not always possible.
