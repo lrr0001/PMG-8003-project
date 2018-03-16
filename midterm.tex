@@ -1,9 +1,9 @@
 \documentclass[11pt]{article}
-\usepackage{fontspec}
+%\usepackage{fontspec}
 \usepackage{ amssymb }
 \usepackage{longtable}
 \usepackage{amsmath}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 \author{Raghav Kuppan}
 \title{Project Proposal}
 \begin{document}
@@ -26,7 +26,7 @@ In many modern applications, the number of observations is much less than the nu
 Alternate methods of regularization have been developed in recent years to promote sparsity. Among sparsity inducing norms, the $\ell_1$ norm is the simplest and most widely used, leading to the Lasso when used in a least-squares framework. While the Lasso does well in high-dimensional settings, it is known to have stability problems in situations where the data exhibit strong correlation structures. Several solutions have been proposed which include the Elastic net, group Lasso and Sampling techniques. However these norms cannot just be plugged into the objective function as extra information is usually required, or in some cases, the problem is further complicated due to the addition of parameters to be estimated. The Trace norm takes into account the correlation structure of the data but does not require manual human intervention. It can be thought of as a way of turning the rank of a matrix into a norm. The Trace norm is adaptive and requires that only a single regularization parameter be chosen. 	
 
 \section{Prior Work}
-Ravikumar et. al ~\cite{ravikumar2010high} study the problem of signed edge recovery on Ising models and establish sufficient conditions on the sample size, dimension, and maximum neighborhood size, to get a consistent estimator. When these conditions are met, the signed neighborhood of every node can be estimated by optimizing a regularized log likelihood function. This way the entire set of signed edges of the graph can be recovered whereby the structure of the Ising model has been found. 
+Ravikumar et. al ~\cite{ravikumar2010high} study the problem of signed edge recovery on Ising models and establish sufficient conditions on the sample size, dimension, and maximum neighborhood size, to get a consistent estimator. When these conditions are met, the signed neighborhood of every node can be estimated by optimizing a log likelihood function with an $\ell_1$ penalty. This way the entire set of signed edges of the graph can be recovered whereby the structure of the Ising model has been found. The technique is demonstrated on four-nearest neighbor lattices, eight-nearest neighbor lattices and a star graph as well as on a class of graphs with unbounded maximum neighborhood size, with the results being consistent with the theoretical conjectures. Methods to generalize the technique to any discrete pairwise Markov random field are discussed
 \section{Approach}
 
 \section{Prior Work on Regularization}
@@ -44,6 +44,6 @@ On top of group lasso and elastic net, clustering algorithm is also involved to 
 \section{Summary}
 
 \bibliography{citation}{}
-\bibliographystyle{ieeetr}
+\bibliographystyle{plain}
 
 \end{document}
