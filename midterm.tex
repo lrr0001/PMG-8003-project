@@ -33,7 +33,8 @@ Unlike the Ravikumar et. al method described above and our proposed approach, th
 
 The CVDT algorithm considers each pair of nodes $X_i,X_j$ to determine whether the edge between them should be included.  The edge is included if there does not exist an assignment of values for any subset $S \subseteq X\\\{X_i,X_j\}$ with $|S| \leq \eta$ such that the probability mass function for $X_i$ does not sufficiently change when conditioned on different values of $X_j$.
 
-Checking all such values grows exponentially with the size of $\eta$, so to be computationally feasible, $\eta$ cannot be large. 
+
+Checking all potential value assignments for all subsets $\{S_i\}$ grows exponentially with the size of $\eta$, so to be computationally feasible, $\eta$ cannot be large. 
 
 \section{Approach}
 
