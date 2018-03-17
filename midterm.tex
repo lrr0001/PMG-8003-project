@@ -36,6 +36,8 @@ The CVDT algorithm considers each pair of nodes $X_i,X_j$ to determine whether t
 Checking all potential value assignments for all subsets $\{S_i\}$ grows exponentially with the size of $\eta$, so to be computationally feasible, $\eta$ cannot be large. 
 
 \section{Approach}
+Our approach is to adopt the maximum likelihood approach as in~\cite{ravikumar2010high} but with the trace norm as our regularization parameter. The signed neighborhood of one node will be estimated by evaluating the conditional distribution of the node conditioned on all the other nodes and then maximizing this with a trace norm penalty. Computing the subgradient of the trace norm is reported to be inefficient and the rate of convergence very slow, so a variational formulation for the trace norm~\cite{grave2011trace} will be used. The ensuing cost function can be optimized using a Conjugated Gradients method. \\ \\ 
+The algorithm will be tested on synthetic data to gauge performance under different correlation settings. Additionally, the algorithm will be tested on the United States Congressional House representative voting records~\cite{schlimmer1987concept}. The method will also be compared with the other approaches discussed above such as the elastic net. 
 
 
 \section{Prior Work on Regularization}
