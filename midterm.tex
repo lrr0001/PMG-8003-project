@@ -27,10 +27,7 @@ Alternate methods of regularization have been developed in recent years to promo
 
 \section{Prior Work}
 Ravikumar et. al ~\cite{ravikumar2010high} study the problem of signed edge recovery on Ising models and establish sufficient conditions on the sample size, dimension, and maximum neighborhood size, to get a consistent estimator. When these conditions are met, the signed neighborhood of every node can be estimated by optimizing a log likelihood function with an $\ell_1$ penalty. This way the entire set of signed edges of the graph can be recovered whereby the structure of the Ising model has been found. This technique is demonstrated on four-nearest neighbor lattices, eight-nearest neighbor lattices and a star graph as well as on a class of graphs with unbounded maximum neighborhood size, with the results being consistent with the theoretical conjectures. Methods to generalize the technique to any discrete pairwise Markov random field are discussed.
-
-\section{Approach}
-Our approach is to adopt the maximum likelihood approach as in~\cite{ravikumar2010high} but with the trace norm as our regularization parameter. The signed neighborhood of one node will be estimated by evaluating the conditional distribution of the node conditioned on all the other nodes and then maximizing this with a trace norm penalty. Computing the subgradient of the trace norm is reported to be inefficient and the rate of convergence very slow, so a variational formulation for the trace norm~\cite{grave2011trace} will be used. The ensuing cost function can be optimized using a Conjugated Gradients method. \\ \\ 
-The algorithm will be tested on synthetic data to gauge performance under different correlation settings. Additionally, the algorithm will be tested on the United States Congressional House representative voting records~\cite{schlimmer1987concept}. The method will also be compared with the other approaches discussed above such as the elastic net. 
+ 
 
 \section{Prior Work on Regularization}
 
