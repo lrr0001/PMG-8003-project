@@ -8,10 +8,10 @@ p = 10 #Number of nodes in the graph
 
 n = 100 #Number of datapoints
 
-mu = 0.1
+mu = 0.01
 
 # Regularization Parameter
-lamb = 0.1
+lamb = 0.001
 
 np.random.seed(2018)
 
@@ -54,8 +54,8 @@ def reg_func(X_nr,theta_nr, param=None):
         return l1_norm
     else:
         global mu
-        #if(mu > 1e-308):
-        #   mu /= 10
+        if(mu > 1e-5):
+           mu /= 10
 
         # M is the matrix that we want to compute the trace Lasso for - so X * Diag(theta)
         M = X_nr.dot(np.diag(theta_nr))
@@ -104,7 +104,7 @@ for i in range(p):
 
 
     #Run the Optimizer on the Objective function, method is Conjugated Gradients
-    theta_opt = optimize.minimize(obj_func, theta_arg,args=(i,),method='CG', options={'disp':True})
+    theta_opt = optimize.minimize(obj_func, theta_arg,args=(i,),method='CG', options={'disp':True, 'maxiter':10})
 
 
     
@@ -124,6 +124,8 @@ time_elapsed = time.time() - start_time
 print("Time Elapsed: ", time_elapsed)
 
 print(theta)
+
+exit()
 
 with open("results.txt", "a") as text_file:
     #print("Reg = Lasso, theta = \n %s \n"%(theta),file=text_file)
