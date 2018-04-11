@@ -18,8 +18,10 @@ np.random.seed(2018)
 # Matrix containing signed edge values between all edges : This is a symmetric matrix
 # Can potentially be replaced by a dictionary of edge values
 theta = np.random.rand(p,p)
+np.fill_diagonal(theta,1)
 
 # Sample data of 0-mean gaussians : n samples each length p
+#X = np.load('house_votes.npy')
 X = np.random.multivariate_normal([0]*p, np.identity(p), (n))
 
 # Replace positive elements by 1 and negative elements by -1 
@@ -73,8 +75,8 @@ def obj_func(theta,r):
     # Compute Pseudo-Likelihood for each data sample (Each row of X) and sum them
     
     for i in range(n):
-        objVal -= cond(X[i,:],theta,r)
-    
+        objVal -= np.log(cond(X[i,:],theta,r))
+    objVal /= n
     # Delete 'r'th column from the matrix
     X_nr = np.delete(X,r,1)
 
@@ -104,7 +106,7 @@ for i in range(p):
 
 
     #Run the Optimizer on the Objective function, method is Conjugated Gradients
-    theta_opt = optimize.minimize(obj_func, theta_arg,args=(i,),method='CG', options={'disp':True, 'maxiter':10})
+    theta_opt = optimize.minimize(obj_func, theta_arg,args=(i,),method='CG', options={'disp':True})
 
 
     
@@ -124,6 +126,13 @@ time_elapsed = time.time() - start_time
 print("Time Elapsed: ", time_elapsed)
 
 print(theta)
+
+for i in range(p):
+    for j in range(i):
+        if(np.abs(theta[i,j]) < np.abs(theta[j,i])):
+            theta[i,j],theta[j,i] = np.sign(theta[i,j]), np.sign(theta[i,j])
+        else:
+            theta[i,j],theta[j,i] = np.sign(theta[j,i]), np.sign(theta[j,i])
 
 exit()
 
