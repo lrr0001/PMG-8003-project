@@ -190,6 +190,8 @@ For more details, see \cite{ravikumar2010high}.
 % This is the appropriate subsection for comparison to logistic regression
 A pseudolikelihood factor is the expression used in logistic regression. We wondered if by leveraging the arguments maximizing other pseudolikelihood factors could be used to improve upon pseudolikelihood regression (through symmetry enforcement). We attempt this in the experiments section using the Wainwright minimum \cite{hoffling2009estimation}. 
 
+Noteably, this type of approach would not require finding the arguments maximizing all of the pseudolikelihood factors, because sparsity-encouraging regularization likely would remove some of the edges incident to the node of interest. Only factors containing the remaining edges would need be considered. This allows for some computational savings.
+
 \section{Datasets}
 
 For Ising model, appropriate real world datasets are not easy to find, since possible choices on one subject are not usually limited to two. Thus, besides the congressional voting record data set, which after eliminating missing votes, we have nicely binary values for the voting pattern of each bill, all other data sets would have three or more possible values for each attribute. We then examined through the categorical data through UCI Machine Learning Repository ~\cite{Dua:2017}. We found the mushroom data set specifically interesting, due to its large number of samples, as well as its 22 attributes that together contribute to whether one specifically given mushroom is poisonous or edible.
@@ -207,13 +209,18 @@ Different from congressional votes data set, this mushroom data set "includes de
 Cleaning of the data and other basic data processing was done on the samples from the dataset using Python. This step also included the removal of samples with missing data from the dataset. 
 The Pseudo-likelihood optimization with regularization was done in Python using the NumPy and SciPy libraries. 
 More specifically, the \textit{minimize} procedure from the \textit{optimize} library was used for the Conjugated Gradients method. 
-The lasso, trace lasso and the elastic net were the regularization schemes implemented in the program. 
+The lasso, trace lasso and the elastic net were the regularization schemes implemented in the program.
+
+We coded the Gibbs block sampling code from scratch in MATLAB, and coded a second version of the trace Lasso maximum pseudolikelihood code in MATLAB for compatibility with the Gibbs sampling code. The derivatives used in the MATLAB code are of our own derivation, and the optimization routines are our own code as well. The novelty of using only some of the pseudolikelihood factors for classification is of our own design.
 
 \section{Experiments}
 \subsection{Synthetic Data}
 On a $8\times8$ degree-$4$ planar lattice, we generate the weights and individual node biases independently from a unit-variance, zero-mean Gaussian distribution.
 We use Gibbs sampling to generate samples.
 Then, we use those samples to attempt to reconstruct the graph. We consider an edge to be "recovered" if its weight is of the same sign as the generating graph.
+
+Unfortunately, the edge recovery under trace LASSO was essentially random. There is a tradeoff between stability and encouraging sparsity. While Trace Lasso does enourage sparsity to an extent, it appears this was insuffient for edge recovery.
+  
 \subsection{Congressional Voting Data}
 
 In Datasets Section, we mentioned about the three possible outcomes for each bill from the congressmen. In order to feed the data into our Ising model, we removed all samples of congressmen whose voting records included missing data. In this way we limited only two possible outcomes for each bill. As a result,  232 samples of congressmen remained. 
@@ -262,8 +269,9 @@ On the other hand, Trace Lasso is at much higher computational cost. We ran thre
 
 \subsection{Mushroom Data}
 \section{Conclusions}
+While in some cases Trace Lasso may outperform competing methods, its overall performance is underwhelming. The cost of computing the singular value decomposition for an $N\times N$ matrix (where $N$ is the number of samples) will in most instances outweigh any potential gains from using this particular penalty term.
 \section{Acknowlegements}
-
+We would like to acknowlege Professor Fekri for including this idea in the list of suggested projects.
 
 \bibliography{citation}{}
 \bibliographystyle{plain}
