@@ -29,9 +29,13 @@ We use Trace Lasso for the purpose of learning the structure of a Markov Random 
 
 \section{Introduction}
 
-Ising models are most well known for their original application of modeling ferromagnetism in statistical mechanics, but their utility spans far beyond that narrow application. Interactive binary variables occur frequently in biological data. In the field of psychopathology, researchers use Ising models to identify core symptoms and guide further investigation into the origin, persistance, and collapse of psychological disorders. Surpisingly, despite the existance of better-suited algorithms to deal with binary data, many researchers still use graphical lasso, the optimal algorithm for learning Gaussian Markov Random Fields, but a poor fit for learning Ising models.
+Ising models are most well known for their original application of modeling ferromagnetism in statistical mechanics, but their utility spans far beyond that narrow application.
+Interactive binary variables occur frequently in biological data.
+In the field of psychopathology, researchers use Ising models to identify core symptoms and guide further investigation into the origin, persistance, and collapse of psychological disorders.
+Surpisingly, despite the existance of better-suited algorithms to deal with binary data, many researchers still use graphical lasso, the optimal algorithm for learning Gaussian Markov Random Fields, but a poor fit for learning Ising models.
 
-Learning the maximum likelihood structure of binary, pairwise systems is an NP-hard problem, even with complete data. To make things tractable, we use a pseudolikelihood approximation and maximize pseudolikelihood factors.  
+Learning the maximum likelihood structure of binary, pairwise systems is an NP-hard problem, even with complete data.
+To make things tractable, we use a pseudolikelihood approximation and maximize pseudolikelihood factors.  
 
 \subsection{Defining the Ising Model}
 An Ising Model is as special case of a pairwise Markov Random Field where each vertex in the graph takes on values in \{-1,1\}.
@@ -62,25 +66,21 @@ This way the entire set of signed edges of the graph can be recovered whereby th
 This technique is demonstrated on four-nearest neighbor lattices, eight-nearest neighbor lattices and a star graph as well as on a class of graphs with unbounded maximum neighborhood size, with the results being consistent with the theoretical conjectures
 
 
-\subsection{Learning Ising Models from Complete Data}
-
-
-
 \subsection{Pseudolikelihood Functions}
 
 A Pseudolikelihood is an approximation to the likelihood function which provides a computationally simpler model for inference in a graphical model and is also exact provided certain assumptions are made about the model. 
 The Ising model joint probability expression cannot be exactly computed since the partition function makes computations intractable.
-Our method involves computing a regularized-pseudolikelihood of node $X_r$ conditioned on the other nodes.
-The pseudo-likelihood approach involves computing the conditonal distribution of a node conditioned on all the other nodes, and then performing the optimization over the parameter set.
+Our method involves computing a regularized-pseudolikelihood factor for each node $X_r$ conditioned on the other nodes.
+The pseudolikelihood approach involves computing the conditonal distribution of a node conditioned on all the other nodes, and then performing the optimization over the parameter set.
 As we are dealing with the Ising model, the conditional distribution has a very clean expression given as 
 $$ \mathbb{P_{\theta^*}}( x_r | x_{\backslash r})  $$ 
 Provided we have samples from the graphical model, this expression is easily computed.\\
-Therefore, given a set of independent and identically distributed samples,  the regularized pseudo-likelihood is of the form of a convex program 
+Therefore, given a set of independent and identically distributed samples,  each regularized pseudolikelihood factor is of the form of a convex program 
 $$ \min_{\theta_{\backslash r} \in \mathbb{R}^{p-1}} \{ l(\theta; \mathbb{X}^n_1) + \lambda \|{ \theta_{\backslash r} }\| \} $$
 
-where $\mathbb{X}^n_1)$ is the set of i.i.d samples from the graph and $\lambda$ is the regularization parameter. 
+where $\mathbb{X}^n_1)$ is the set of i.i.d samples from the graph and $\lambda$ is the regularization hyperparameter. 
 
-Different Regularization techniques can be used according to the correlation structure of our data and the application where the Ising model is being used.
+Different regularization techniques can be used according to the correlation structure of our data and the application where the Ising model is being used.
 
 \subsection{Regularization}
 
