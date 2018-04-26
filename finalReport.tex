@@ -202,7 +202,9 @@ The lasso, trace lasso and the elastic net were the regularization schemes imple
 
 \section{Experiments}
 \subsection{Synthetic Data}
-On a $8\times8$ degree-$4$ planar lattice, we generate the weights and individual node biases independently from a unit-variance, zero-mean Gaussian distribution.  We use Gibbs sampling to generate samples.  Then, we use those samples to attempt to reconstruct the graph. 
+On a $8\times8$ degree-$4$ planar lattice, we generate the weights and individual node biases independently from a unit-variance, zero-mean Gaussian distribution.
+We use Gibbs sampling to generate samples.
+Then, we use those samples to attempt to reconstruct the graph. We consider an edge to be "recovered" if its weight is of the same sign as the generating graph.
 \subsection{Congressional Voting Data}
 
 In Datasets Section, we mentioned about the three possible outcomes for each bill from the congressmen. In order to feed the data into our Ising model, we removed all samples of congressmen whose voting records included missing data. In this way we limited only two possible outcomes for each bill. As a result,  232 samples of congressmen remained. 
