@@ -193,7 +193,7 @@ For more details, see \cite{ravikumar2010high}.
 
 \subsection{Learning Graphical Models for Classification}
 % This is the appropriate subsection for comparison to logistic regression
-A pseudolikelihood factor is the expression used in logistic regression. We wondered if by leveraging the arguments maximizing other pseudolikelihood factors could be used to improve upon pseudolikelihood regression (through symmetry enforcement). We attempt this in the experiments section using the Wainwright minimum \cite{hoffling2009estimation}. 
+A pseudolikelihood factor is the expression used in logistic regression. We wondered if by leveraging the arguments maximizing other pseudolikelihood factors could be used to improve upon pseudolikelihood regression (through symmetry enforcement). We attempt this in the experiments section using the Wainwright minimum \cite{hofling2009estimation}. 
 
 Noteably, this type of approach would not require finding the arguments maximizing all of the pseudolikelihood factors, because sparsity-encouraging regularization likely would remove some of the edges incident to the node of interest. Only factors containing the remaining edges would need be considered. That is, we only need to consider the pseudolikelihood factors corresponding to nodes selected by the pseudolikehood function of the node of interest. This allows for some computational savings.
 
@@ -299,6 +299,12 @@ Using logistic regression, the regularization did very little. Performance on tr
 
 \section{Conclusions}
 While in some cases Trace Lasso may outperform competing methods, its overall performance is underwhelming. The cost of computing the singular value decomposition for an $N\times N$ matrix (where $N$ is the number of samples) will in most instances outweigh any potential gains from using this particular penalty term. Something else to note is that trace Lasso is very sensitive to the penalty coefficient, making it very hard to get nonzero coefficients.
+
+\section{Future Work}
+Clearly the current Ising model plus Trace Lasso fails to be the perfect model for either Congressional Voting dataset or Mushroom dataset. A more carefully designed model will be tested on the Congressional Voting dataset. Besides, since modeling the relationship between bill is controversial, modeling the relationship between congressmen could be implemented, with the help of Gibbs sampling that could generate more samples. Besides, an improved general Markov Random Field with Trace Lasso could be implemented on the mushroom dataset so that this model can handle multiple values for one single attribute.
+
+We understand that Trace Lasso is effective in many applications but we just need to further improve our graphical model according to the real world datasets.
+
 \section{Acknowlegements}
 We would like to acknowlege Professor Fekri for including this idea in the list of suggested projects.
 
