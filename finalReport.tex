@@ -295,8 +295,10 @@ Computational Time & 636 sec & 55 sec & 67 sec \\
 On the other hand, Trace Lasso is at much higher computational cost. We ran three trials for each algorithm, and took the average time. It is observed that Trace Lasso roughly requires 10 times as much as computational time.
 
 \subsection{Mushroom Data}
+Using logistic regression, the regularization did very little. Performance on training data was well above $80\%$, but on test fell close to $20\%$.  It's unclear whether this is an artifact of the dataset, or a flaw with trace lasso, but it prevents us from making meaningful comparisons here.  
+
 \section{Conclusions}
-While in some cases Trace Lasso may outperform competing methods, its overall performance is underwhelming. The cost of computing the singular value decomposition for an $N\times N$ matrix (where $N$ is the number of samples) will in most instances outweigh any potential gains from using this particular penalty term.
+While in some cases Trace Lasso may outperform competing methods, its overall performance is underwhelming. The cost of computing the singular value decomposition for an $N\times N$ matrix (where $N$ is the number of samples) will in most instances outweigh any potential gains from using this particular penalty term. Something else to note is that trace Lasso is very sensitive to the penalty coefficient, making it very hard to get nonzero coefficients.
 \section{Acknowlegements}
 We would like to acknowlege Professor Fekri for including this idea in the list of suggested projects.
 
