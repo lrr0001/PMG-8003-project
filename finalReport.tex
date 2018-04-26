@@ -30,7 +30,7 @@ We use Trace Lasso for the purpose of learning the structure of a Markov Random 
 \section{Introduction}
 
 Ising models are most well known for their original application of modeling ferromagnetism in statistical mechanics, but their utility spans far beyond that narrow application.
-Interactive binary variables occur frequently in biological data, especially dealing with genetics \cite{wang2009learning}
+Interactive binary variables occur frequently in biological data, especially dealing with genetics \cite{wang2009learning}\cite{rhemtulla2016network}\cite{mcnally2015mental}
 In the field of psychopathology, researchers use Ising models to identify core symptoms and guide further investigation into the origin, persistance, and collapse of psychological disorders\cite{fried2016good}.
 Surpisingly, despite the existance of better-suited algorithms to deal with binary data, many researchers still use graphical lasso, the optimal algorithm for learning Gaussian Markov Random Fields, but a poor fit for learning Ising models.
 
@@ -178,8 +178,18 @@ This can be solved using a conjugated gradients method. The optimization is stil
 
 %\subsection{Parameter Selection}
 \subsection{Applying Methods to Categorical Data}
+Categorical data with more than two categories is not binary.
+However, a variable with $m$ disjoint categories can be treated as $m - 1$ binary random variables (the last category is the negative of all other categories).
+Pairwise connections can be learned on the expanded model as if it were an Ising model.
+Interaction between within-variable nodes are not pairwise, and should not be treated as such, but it is not unreasonable to model between variable interactions as pairwise interactions between the binary nodes.
+This allows us to attack categorical problems with the algorithms described in earlier sections.
+For more details, see \cite{ravikumar2010high}.  
+
+
 \subsection{Learning Graphical Models for Classification}
 % This is the appropriate subsection for comparison to logistic regression
+A pseudolikelihood factor is the expression used in logistic regression. We wondered if by leveraging the arguments maximizing other pseudolikelihood factors could be used to improve upon pseudolikelihood regression (through symmetry enforcement). We attempt this in the experiments section using the Wainwright minimum \cite{hoffling2009estimation}. 
+
 \section{Datasets}
 
 For Ising model, appropriate real world datasets are not easy to find, since possible choices on one subject are not usually limited to two. Thus, besides the congressional voting record data set, which after eliminating missing votes, we have nicely binary values for the voting pattern of each bill, all other data sets would have three or more possible values for each attribute. We then examined through the categorical data through UCI Machine Learning Repository ~\cite{Dua:2017}. We found the mushroom data set specifically interesting, due to its large number of samples, as well as its 22 attributes that together contribute to whether one specifically given mushroom is poisonous or edible.
@@ -192,7 +202,6 @@ During the Congressional Quarterly Almanac, 98th Congress, 2nd session, 1984, 43
 
 Different from congressional votes data set, this mushroom data set "includes descriptions of hypothetical samples corresponding to 23 species of gilled mushrooms in the Agaricus and Lepiota Family (pp. 500-525)". 22 attributes are included; each attribute has possible values ranging from 2 to 12. The goal for this data set is much clearer than the congressional votes data set: all we need to know is how these attributes together would decide whether the mushroom is edible. Notice that there is no simple rule to determine the edibility of a mushroom. Comparing with the congressional votes data set, another advantage of this data set is that it has more than 8000 samples; what's more, all missing data are on the 11th attribute, so that we can either completely remove the 11th attribute from our modeling or treat the missing data as an extra value. For this data set, 46 publications are dated. Most of them are related to machine learning, data mining and feature selection.
 
-\section{Evaluating Performance}
 \section{Logistics}
 
 Cleaning of the data and other basic data processing was done on the samples from the dataset using Python. This step also included the removal of samples with missing data from the dataset. 
