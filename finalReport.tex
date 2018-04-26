@@ -24,10 +24,14 @@ Learning the structure of a Markov Random Field from independent and identically
 Unfortunately, calculation of the partition function is intractable for most graphs.
 Trace Lasso regularization of a pseudo-likelihood has been proposed as a means of learning the structure of probabilistic graphical models from samples. 
 The Trace Lasso exhibits less volatility in response to correlation between random variables than Lasso while also promoting sparsity. 
-We plan to adapt Trace Lasso for the purpose of learning the structure of a Markov Random field, using a maximum pseudo-likelihood approach.
+We use Trace Lasso for the purpose of learning the structure of a Markov Random field, using a maximum pseudo-likelihood approach.
 
 
 \section{Introduction}
+
+Ising models are most well known for their original application of modeling ferromagnetism in statistical mechanics, but their utility spans far beyond that narrow application. Interactive binary variables occur frequently in biological data. In the field of psychopathology, researchers use Ising models to identify core symptoms and guide further investigation into the origin, persistance, and collapse of psychological disorders. Surpisingly, despite the existance of better-suited algorithms to deal with binary data, many researchers still use graphical lasso, the optimal algorithm for learning Gaussian Markov Random Fields, but a poor fit for learning Ising models.
+
+Learning the maximum likelihood structure of binary, pairwise systems is an NP-hard problem, even with complete data. To make things tractable, we use a pseudolikelihood approximation and maximize pseudolikelihood factors.  
 
 \subsection{Defining the Ising Model}
 An Ising Model is as special case of a pairwise Markov Random Field where each vertex in the graph takes on values in \{-1,1\}.
