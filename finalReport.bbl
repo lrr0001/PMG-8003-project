@@ -1,0 +1,72 @@
+\begin{thebibliography}{10}
+
+\bibitem{Chun1999ANNigma}
+Hung-Ju~Huang Chun-Nan~Hsu and Dietrich Schuschel.
+\newblock The annigma-wrapper approach to fast feature selection for neural
+  nets.
+\newblock {\em IEEE TRANSACTIONS ON SYSTEM, MAN, AND CYBERNETICS}, 1999.
+
+\bibitem{Dan2012Bud}
+Omid~Madani Daniel J.~Lizotte and Russell Greiner.
+\newblock Budgeted learning of naive-bayes classifiers.
+\newblock {\em CoRR}, abs/1212.2472, 2012.
+
+\bibitem{Dua:2017}
+Dua Dheeru and Efi Karra~Taniskidou.
+\newblock {UCI} machine learning repository, 2017.
+
+\bibitem{Erin1995Fea}
+Kristin P.~Bennett Erin J.~Bredensteiner.
+\newblock Feature minimization within decision trees.
+\newblock {\em R.P.I. Math Report}, (218), 1995.
+
+\bibitem{fried2016good}
+Eiko~I Fried, Sacha Epskamp, Randolph~M Nesse, Francis Tuerlinckx, and Denny
+  Borsboom.
+\newblock What are'good'depression symptoms? comparing the centrality of dsm
+  and non-dsm symptoms of depression in a network analysis.
+\newblock {\em Journal of Affective Disorders}, 189:314--320, 2016.
+
+\bibitem{grave2011trace}
+Edouard Grave, Guillaume~R Obozinski, and Francis~R Bach.
+\newblock Trace lasso: a trace norm regularization for correlated designs.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  2187--2195, 2011.
+
+\bibitem{Huan1998Inc}
+Rudy~Setiono Huan~Liu.
+\newblock Incremental feature selection.
+\newblock {\em Applied Intelligence}, 9(3):217, 1998.
+
+\bibitem{mcnally2015mental}
+Richard~J McNally, Donald~J Robinaugh, Gwyneth~WY Wu, Li~Wang, Marie~K Deserno,
+  and Denny Borsboom.
+\newblock Mental disorders as causal systems: A network approach to
+  posttraumatic stress disorder.
+\newblock {\em Clinical Psychological Science}, 3(6):836--849, 2015.
+
+\bibitem{ravikumar2010high}
+Pradeep Ravikumar, Martin~J Wainwright, John~D Lafferty, et~al.
+\newblock High-dimensional ising model selection using ℓ1-regularized
+  logistic regression.
+\newblock {\em The Annals of Statistics}, 38(3):1287--1319, 2010.
+
+\bibitem{rhemtulla2016network}
+Mijke Rhemtulla, Eiko~I Fried, Steven~H Aggen, Francis Tuerlinckx, Kenneth~S
+  Kendler, and Denny Borsboom.
+\newblock Network analysis of substance abuse and dependence symptoms.
+\newblock {\em Drug \& Alcohol Dependence}, 161:230--237, 2016.
+
+\bibitem{wang2009learning}
+Pei Wang, Dennis~L Chao, and Li~Hsu.
+\newblock Learning networks from high dimensional binary data: An application
+  to genomic instability data.
+\newblock {\em arXiv preprint arXiv:0908.3882}, 2009.
+
+\bibitem{Zou2005Reg}
+Hui Zou and Trevor Hastie.
+\newblock Regularization and variable selection via the elastic net.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)}, 67(2):301--320, 2005.
+
+\end{thebibliography}

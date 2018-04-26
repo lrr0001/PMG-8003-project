@@ -73,7 +73,7 @@ The Ising model joint probability expression cannot be exactly computed since th
 Our method involves computing a regularized-pseudolikelihood factor for each node $X_r$ conditioned on the other nodes.
 The pseudolikelihood approach involves computing the conditonal distribution of a node conditioned on all the other nodes, and then performing the optimization over the parameter set.
 As we are dealing with the Ising model, the conditional distribution has a very clean expression given as 
-$$ \mathbb{P_{\theta^*}}( x_r | x_{\backslash r})  $$ 
+$$ \mathbb{P_{\theta^*}}( x_r | x_{\backslash r}) = \frac{exp(2x_r \sum\limits_{t \in V_{\backslash r}} \theta^*_{rt} x_t )}{exp(2x_r \sum\limits_{t \in V_{\backslash r}} \theta^*_{rt} x_t ) + 1}  $$ 
 Provided we have samples from the graphical model, this expression is easily computed.\\
 Therefore, given a set of independent and identically distributed samples,  each regularized pseudolikelihood factor is of the form of a convex program 
 $$ \min_{\theta_{\backslash r} \in \mathbb{R}^{p-1}} \{ l(\theta; \mathbb{X}^n_1) + \lambda \|{ \theta_{\backslash r} }\| \} $$
