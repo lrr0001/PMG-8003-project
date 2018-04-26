@@ -153,6 +153,24 @@ Tikhonov regularization, while for almost uncorrelated predictors, it will behav
 Instead of blindly adding convexity in all directions, the trace lasso adds strong convexity only in the direction of highly correlated predictors. 
 Thus, it always has a unique minimum and is much more stable than the lasso. 
 \section{Approach}
+
+Our approach is to adopt the maximum psuedo-likelihood approach as in~\cite{ravikumar2010high} but with the trace norm as our regularization parameter. 
+The signed neighborhood of one node will be estimated by evaluating the conditional distribution of the node conditioned on all the other nodes and then maximizing this with a trace norm penalty.
+Computing the Pseudo-likelihood using the generated samples is not very hard for the Ising model. 
+However there are some difficulties in evaluating the trace norm. 
+The usual method of optimization is by subgradient descent where the subgradient is the generalization of the derivative to functions which are not differentiable. 
+Computing the subgradient of the trace norm is reported to be inefficient and the rate of convergence very slow, so a variational formulation for the trace norm~\cite{grave2011trace} is be used. 
+The ensuing cost function can be optimized using a Conjugated Gradients method.\\ \\
+The Trace Norm of a matrix $M$ can be expressed as 
+$$ \|M\|_* = \frac{1}{2} \underset{S \succeq 0}{inf} \quad  tr(M^T S^{-1} M) + tr(S)	 $$
+and the infimum is attained for $S = M^T M$.\\ \\
+Therefore, our optimization problem can be reformulated as
+$$ \min_{\theta_{\backslash r} \in \mathbb{R}^{p-1}}  l(\theta; \mathbb{X}^n_1) + \frac{\lambda}{2} \theta^T Diag(diag(X^T S^{-1} X ))\theta + \frac{\lambda}{2} tr(S) $$ 
+where $Diag(u)$ is the diagonal matrix whose diagonal elements are the vector $u$ and $diag(M)$ is the diagonal of the matrix $M$.
+This problem is jointly convex in $(\theta, S)$ and con be solved by alternating the minimization over $\theta$ and $S$.
+The matrix $S$ can be computed with a closed form expression for the given problem which leaves us with a convex optimization program for the parameter $\theta$.
+This can be solved using a conjugated gradients method. The optimization is still not cheap as compared to the $\ell_1$ norm and takes quite some time to run. 
+
 \subsection{Parameter Selection}
 \subsection{Applying Methods to Categorical Data}
 \subsection{Learning Graphical Models for Classification}
