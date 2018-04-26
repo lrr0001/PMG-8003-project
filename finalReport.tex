@@ -3,6 +3,7 @@
 \usepackage{ amssymb }
 \usepackage{longtable}
 \usepackage{amsmath}
+\usepackage{graphicx}
 %\usepackage[utf8]{inputenc}
 \author{Raghav Kuppan, Lee Richert, and Yuanda Zhu}
 \title{Project Final Report}
@@ -202,6 +203,8 @@ The lasso, trace lasso and the elastic net were the regularization schemes imple
 In Datasets Section, we mentioned about the three possible outcomes for each bill from the congressmen. In order to feed the data into our Ising model, we removed all samples of congressmen whose voting records included missing data. In this way we limited only two possible outcomes for each bill. As a result,  232 samples of congressmen remained. 
 
 We further divided these 232 congressmen into two sections, based on their party. 80 percent of data in each section are our training data, to be fed into one of the three core algorithm: Lasso, Trace Lasso and Elastic Net. Ising model was built with the parameters optimized from the core algorithm. The rest 20 percent of the data are our testing data; they were queried with the Ising model to calculate the likelihood. 
+
+\includegraphics[scale=0.5]{Control_Flow}
 
 Since we would like to know how the bills interact with each other, our goal was to predict how the congressman would vote on a target bill given the voting pattern of all other 15 bills. Thus, for our Ising model, each bill is a node; a total of 16 nodes are in the graphical model. Also note that two separate Ising models were generated, one for democrats and the other for republicans.
 
