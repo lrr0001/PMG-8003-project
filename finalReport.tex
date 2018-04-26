@@ -171,13 +171,19 @@ This problem is jointly convex in $(\theta, S)$ and con be solved by alternating
 The matrix $S$ can be computed with a closed form expression for the given problem which leaves us with a convex optimization program for the parameter $\theta$.
 This can be solved using a conjugated gradients method. The optimization is still not cheap as compared to the $\ell_1$ norm and takes quite some time to run. 
 
-\subsection{Parameter Selection}
+%\subsection{Parameter Selection}
 \subsection{Applying Methods to Categorical Data}
 \subsection{Learning Graphical Models for Classification}
 % This is the appropriate subsection for comparison to logistic regression
 \section{Datasets}
 \section{Evaluating Performance}
 \section{Logistics}
+
+Cleaning of the data and other basic data processing was done on the samples from the dataset using Python. This step also included the removal of samples with missing data from the dataset. 
+The Pseudo-likelihood optimization with regularization was done in Python using the NumPy and SciPy libraries. 
+More specifically, the \textit{minimize} procedure from the \textit{optimize} library was used for the Conjugated Gradients method. 
+The lasso, trace lasso and the elastic net were the regularization schemes implemented in the program. 
+
 \section{Experiments}
 \subsection{Synthetic Data}
 \subsection{Congressional Voting Data}
